@@ -19,6 +19,13 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        // animation configuration
+        this.anims.create({
+            key: 'explode',
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
+            frameRate: 30
+        })
+
         this.add.text(20, 20, "Rocket Patrol Menu")
         this.scene.start("playScene")
     }
