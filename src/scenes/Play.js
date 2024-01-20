@@ -60,6 +60,11 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        // check key input for restart
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)) {
+            this.scene.restart()
+        }
+
         this.starfield.tilePositionX -= 3
         if (!this.gameOver) {
             this.p1Rocket.update()
@@ -109,5 +114,6 @@ class Play extends Phaser.Scene {
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
+        this.sound.play('sfx-explosion')
     }
 }
